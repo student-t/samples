@@ -48,7 +48,7 @@ run mkdir -p /labkey/apps
 #
 # Install Oracle Java 
 # 
-add ./labkey/src/server-jre-7u60-linux-x64.tar.gz /labkey/apps/
+add ./labkey/src/serverjre-10_linux-x64_bin.tar.gz /labkey/apps/
 # run tar xzf /labkey/src/server-jre-7u60-linux-x64.tar.gz
 # run mv ./jdk1.7.0_60 /labkey/apps
 run ls -la /labkey/apps/
@@ -65,12 +65,16 @@ run ls -la /labkey/apps/
 run useradd -m -u 3000 tomcat7
 
 # Install Tomcat binaries
-add ./tomcat/apache-tomcat-7.0.54.tar.gz /labkey/apps
-#run tar xzf /labkey/src/apache-tomcat-7.0.54.tar.gz
-#run mv ./apache-tomcat-7.0.54 /labkey/apps/
-run (ln -s /labkey/apps/apache-tomcat-7.0.54 /labkey/apps/tomcat; \
+add tomcat/apache-tomcat-7.0.85.tar.gz /labkey/apps
+
+run ls -la /labkey/apps/
+#run tar xzf /labkey/apps/apache-tomcat-7.0.85.tar.gz
+
+run ls -la /labkey/apps/
+#run mv ./apache-tomcat-7.0.85 /labkey/apps/
+run (ln -s /labkey/apps/apache-tomcat-7.0.85 /labkey/apps/tomcat; \
      mkdir -p /labkey/apps/tomcat/conf/Catalina/localhost; \
-    chown -R tomcat7.tomcat7 /labkey/apps/apache-tomcat-7.0.54 )
+    chown -R tomcat7.tomcat7 /labkey/apps/apache-tomcat-7.0.85 )
 
 # Install configuration files
 add ./tomcat/server.xml /labkey/apps/tomcat/conf/server.xml 
@@ -103,21 +107,24 @@ USER root
 # 
 
 # Copy files to the container 
-copy ./labkey/src/LabKey14.1-31615-bin.tar.gz /labkey/src/LabKey14.1-31615-bin.tar.gz
+run ls -la *
+copy ./labkey/src/LabKey18.1-57017.17-community-bin.tar.gz /labkey/src/LabKey14.1-31615-bin.tar.gz
 add ./labkey/labkey.xml /labkey/apps/tomcat/conf/Catalina/localhost/ROOT.xml
 add ./labkey/start_labkey.sh /labkey/bin/start_labkey.sh
 add ./labkey/init_xvfb /labkey/bin/xvfb.sh
 run chmod +x /labkey/bin/*
 
+run ls -la  /labkey/src/LabKey*
+
 # Install the LabKey Server 
 run (tar xzf /labkey/src/LabKey14.1-31615-bin.tar.gz; \
-     cp -R LabKey14.1-31615-bin/bin /labkey/labkey; \
-     cp -R LabKey14.1-31615-bin/modules /labkey/labkey; \
-     cp -R LabKey14.1-31615-bin/labkeywebapp /labkey/labkey; \
-     cp -R LabKey14.1-31615-bin/pipeline-lib /labkey/labkey; \
-     cp -f LabKey14.1-31615-bin/tomcat-lib/*.jar /labkey/apps/tomcat/lib/; \
+     cp -R LabKey18.1-57017.17-community-bin/bin /labkey/labkey; \
+     cp -R LabKey18.1-57017.17-community-bin/modules /labkey/labkey; \
+     cp -R LabKey18.1-57017.17-community-bin/labkeywebapp /labkey/labkey; \
+     cp -R LabKey18.1-57017.17-community-bin/pipeline-lib /labkey/labkey; \
+     cp -f LabKey18.1-57017.17-community-bin/tomcat-lib/*.jar /labkey/apps/tomcat/lib/; \
      chown -R tomcat7.tomcat7 /labkey/labkey; \
-     rm -rf LabKey14.1-31615-bin)
+     rm -rf LabKey18.1-57017.17-community-bin)
 
 # Clean-up 
 #run rm /labkey/src/server-jre-7u60-linux-x64.tar.gz
