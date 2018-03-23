@@ -137,7 +137,7 @@ run (tar xzf /labkey/src/LabKey14.1-31615-bin.tar.gz; \
 #run rm /labkey/src/LabKey14.1-31615-bin.tar.gz
 #run rm -rf LabKey14.1-31615-bin
 
-run PATH=/labkey/apps/jdk-10/bin:$PATH
+ENV PATH="/labkey/apps/jdk-10/bin:${PATH}"
 
 # Expose LabKey Server web application 
 expose 8080
