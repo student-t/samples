@@ -53,7 +53,7 @@ run mkdir -p /labkey/apps
 #
 # Install Oracle Java 
 # 
-add ./labkey/src/serverjre-10_linux-x64_bin.tar.gz /labkey/apps/
+add ./labkey/src/server-jre-8u161-linux-x64.tar.gz /labkey/apps/
 # run tar xzf /labkey/src/server-jre-7u60-linux-x64.tar.gz
 # run mv ./jdk1.7.0_60 /labkey/apps
 run ls -la /labkey/apps/
@@ -137,7 +137,7 @@ run (tar xzf /labkey/src/LabKey14.1-31615-bin.tar.gz; \
 #run rm /labkey/src/LabKey14.1-31615-bin.tar.gz
 #run rm -rf LabKey14.1-31615-bin
 
-ENV PATH="/labkey/apps/jdk-10/bin:${PATH}"
+ENV PATH="/labkey/apps/jdk1.8.0_161/bin:${PATH}"
 
 # Expose LabKey Server web application 
 expose 8080
