@@ -145,11 +145,4 @@ expose 8080
 # Start Tomcat and PostgreSQL Daemons when container is started.
 # 
 workdir /labkey/
-cmd /labkey/bin/start_labkey.sh 
-
-
-
-
-
-
-
+cmd /labkey/bin/start_labkey.sh
