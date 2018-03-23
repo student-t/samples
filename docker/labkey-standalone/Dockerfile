@@ -25,10 +25,10 @@ run echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc
 # Update the Ubuntu and PostgreSQL repository indexes
 run apt-get update
 
-run apt-get install vim
-run apt-get install curl
-run apt-get install wget
-run apt-get install lynx
+run apt-get install -y vim
+run apt-get install -y curl
+run apt-get install -y wget
+run apt-get install -y lynx
 
 # Install latest patches 
 # run DEBIAN_FRONTEND=noninteractive; apt-get -y -q upgrade 
